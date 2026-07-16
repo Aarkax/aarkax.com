@@ -6,7 +6,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://aarkax.com",
   description:
     "Aarkax builds dependable data, AI, automation, and platform reliability systems for organizations moving from architecture to production.",
-  email: "hello@aarkax.com",
+  email: "info@aarkax.com",
   linkedIn: "https://www.linkedin.com/company/aarkax"
 };
 
