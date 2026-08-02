@@ -20,14 +20,14 @@ export function CTASection() {
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href={primaryCta.href}
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-lg bg-amber px-8 text-base font-semibold text-navy shadow-amber transition hover:-translate-y-0.5 hover:bg-[#d8890d]"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-lg bg-amber px-8 text-base font-semibold text-ivory"
               >
                 {primaryCta.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/what-we-do"
-                className="inline-flex h-14 items-center justify-center rounded-lg border border-ivory/20 px-8 text-base font-semibold text-ivory transition hover:-translate-y-0.5 hover:bg-ivory/[0.08]"
+                className="inline-flex h-14 items-center justify-center rounded-lg bg-amber px-8 text-base font-semibold text-ivory"
               >
                 Explore capabilities
               </Link>

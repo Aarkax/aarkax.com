@@ -21,13 +21,13 @@ export function MegaMenu({ active, onClose }: MegaMenuProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
       transition={{ duration: 0.18 }}
-      className="absolute left-1/2 top-[calc(100%+0.7rem)] hidden w-[760px] -translate-x-1/2 rounded-lg border border-ivory/15 bg-navy/[0.96] p-4 shadow-soft backdrop-blur-xl lg:block"
+      className="absolute left-1/2 top-full hidden w-[760px] -translate-x-1/2 rounded-lg border border-navy/10 bg-white/[0.98] p-4 shadow-soft backdrop-blur-xl lg:block"
     >
       <div className="grid grid-cols-[0.75fr_1.25fr] gap-4">
-        <div className="rounded-lg border border-ivory/[0.12] bg-ivory/[0.06] p-5 text-ivory">
+        <div className="rounded-lg border border-navy/10 bg-surface-soft p-5 text-navy">
           <p className="font-mono text-xs uppercase tracking-[0.14em] text-amber">{group.eyebrow}</p>
-          <h3 className="mt-5 text-2xl font-semibold leading-tight text-ivory">{group.title}</h3>
-          <p className="mt-4 text-sm leading-6 text-ivory/70">{group.description}</p>
+          <h3 className="mt-5 text-2xl font-semibold leading-tight text-navy">{group.title}</h3>
+          <p className="mt-4 text-sm leading-6 text-body">{group.description}</p>
           <Link
             href={group.href}
             onClick={onClose}
@@ -46,11 +46,11 @@ export function MegaMenu({ active, onClose }: MegaMenuProps) {
                 key={item.title}
                 href={item.href}
                 onClick={onClose}
-                className="rounded-lg border border-ivory/[0.12] bg-ivory/[0.05] p-4 transition hover:-translate-y-0.5 hover:border-amber/50 hover:bg-ivory/[0.08]"
+                className="rounded-lg border border-navy/10 bg-white p-4 transition hover:-translate-y-0.5 hover:border-amber/50 hover:bg-surface-soft"
               >
                 <Icon className="h-5 w-5 text-amber" />
-                <p className="mt-4 text-sm font-semibold text-ivory">{item.title}</p>
-                <p className="mt-2 line-clamp-2 text-xs leading-5 text-ivory/60">{description}</p>
+                <p className="mt-4 text-sm font-semibold text-navy">{item.title}</p>
+                <p className="mt-2 line-clamp-2 text-xs leading-5 text-body">{description}</p>
               </Link>
             );
           })}

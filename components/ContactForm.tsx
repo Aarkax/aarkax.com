@@ -74,19 +74,19 @@ export function ContactForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" id="name" error={errors.name}>
-          <input id="name" name="name" autoComplete="name" className="form-input" />
+          <input id="name" name="name" autoComplete="name" className="form-input" aria-invalid={Boolean(errors.name)} />
         </Field>
         <Field label="Work email" id="email" error={errors.email}>
-          <input id="email" name="email" type="email" autoComplete="email" className="form-input" />
+          <input id="email" name="email" type="email" autoComplete="email" className="form-input" aria-invalid={Boolean(errors.email)} />
         </Field>
         <Field label="Company" id="company" error={errors.company}>
-          <input id="company" name="company" autoComplete="organization" className="form-input" />
+          <input id="company" name="company" autoComplete="organization" className="form-input" aria-invalid={Boolean(errors.company)} />
         </Field>
         <Field label="Role" id="role" error={errors.role}>
           <input id="role" name="role" autoComplete="organization-title" className="form-input" />
         </Field>
         <Field label="Area of interest" id="interest" error={errors.interest}>
-          <select id="interest" name="interest" className="form-input">
+          <select id="interest" name="interest" className="form-input" aria-invalid={Boolean(errors.interest)}>
             <option value="">Select one</option>
             {contactInterestOptions.map((option) => (
               <option key={option} value={option}>
@@ -119,6 +119,7 @@ export function ContactForm() {
             name="description"
             rows={6}
             className="form-input min-h-36 resize-y py-3"
+            aria-invalid={Boolean(errors.description)}
             placeholder="Describe the current state, desired outcome, constraints, and systems involved."
           />
         </Field>
@@ -134,14 +135,14 @@ export function ContactForm() {
             customer, or production secrets in this form.
           </span>
         </label>
-        {errors.consent ? <p className="mt-2 text-sm text-red-700">{errors.consent}</p> : null}
+        {errors.consent ? <p className="mt-2 text-sm text-danger">{errors.consent}</p> : null}
       </div>
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
         <button
           type="submit"
           disabled={state === "submitting"}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-amber px-6 text-sm font-semibold text-navy transition hover:-translate-y-0.5 hover:bg-[#d8890d] disabled:translate-y-0 disabled:opacity-60"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-amber px-6 text-sm font-semibold text-ivory disabled:opacity-60"
         >
           {state === "submitting" ? "Sending..." : "Send inquiry"}
           <ArrowRight className="h-4 w-4" />
@@ -173,7 +174,7 @@ function Field({
         {label}
       </label>
       {children}
-      {error ? <p className="mt-2 text-sm text-red-700">{error}</p> : null}
+      {error ? <p className="mt-2 text-sm text-danger">{error}</p> : null}
     </div>
   );
 }

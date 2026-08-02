@@ -79,7 +79,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
         <Link
           href={primaryCta.href}
           onClick={onClose}
-          className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-lg bg-amber px-5 text-sm font-semibold text-navy"
+          className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-lg bg-amber px-5 text-sm font-semibold text-ivory"
         >
           {primaryCta.label}
         </Link>

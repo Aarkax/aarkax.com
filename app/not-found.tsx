@@ -18,11 +18,11 @@ export default function NotFound() {
               The route may have moved, or it may be a future page that is not exposed until the content is ready.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link className="inline-flex h-12 items-center justify-center rounded-lg bg-amber px-6 text-sm font-semibold text-navy" href="/">
+              <Link className="inline-flex h-12 items-center justify-center rounded-lg bg-amber px-6 text-sm font-semibold text-ivory" href="/">
                 Return home
               </Link>
               <Link
-                className="inline-flex h-12 items-center justify-center rounded-lg border border-ivory/20 px-6 text-sm font-semibold text-ivory"
+                className="inline-flex h-12 items-center justify-center rounded-lg bg-amber px-6 text-sm font-semibold text-ivory"
                 href={primaryCta.href}
               >
                 {primaryCta.label}

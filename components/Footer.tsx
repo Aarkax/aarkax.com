@@ -24,13 +24,13 @@ export function Footer() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={primaryCta.href}
-                className="inline-flex h-12 items-center justify-center rounded-lg bg-amber px-5 text-sm font-semibold text-navy transition hover:-translate-y-0.5 hover:bg-[#d8890d]"
+                className="inline-flex h-12 items-center justify-center rounded-lg bg-amber px-5 text-sm font-semibold text-ivory"
               >
                 {primaryCta.label}
               </Link>
               <Link
                 href={`mailto:${siteConfig.email}`}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-ivory/15 px-5 text-sm font-semibold text-ivory transition hover:bg-ivory/[0.08]"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-amber px-5 text-sm font-semibold text-ivory"
               >
                 <Mail className="h-4 w-4" />
                 {siteConfig.email}

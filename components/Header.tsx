@@ -45,8 +45,8 @@ export function Header() {
           className={cn(
             "relative mx-auto flex h-16 max-w-7xl items-center justify-between rounded-lg border px-4 backdrop-blur-xl transition duration-300 sm:px-5",
             scrolled
-              ? "border-ivory/15 bg-navy/[0.92] shadow-soft"
-              : "border-ivory/[0.12] bg-navy/[0.72] shadow-none"
+              ? "border-navy/10 bg-white/[0.96] shadow-card"
+              : "border-navy/10 bg-white/[0.88] shadow-card"
           )}
         >
           <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Aarkax home">
@@ -56,7 +56,7 @@ export function Header() {
               width={132}
               height={36}
               priority
-              className="h-11 w-auto brightness-0 invert"
+              className="h-11 w-auto"
             />
           </Link>
 
@@ -73,8 +73,8 @@ export function Header() {
                   onFocus={() => setActiveMenu(canOpen ? (item.label as MenuName) : null)}
                   onMouseEnter={() => setActiveMenu(canOpen ? (item.label as MenuName) : null)}
                   className={cn(
-                    "rounded-md px-3 py-2 text-sm font-medium text-ivory/70 transition hover:bg-ivory/[0.08] hover:text-ivory focus-visible:outline-offset-2",
-                    active && "bg-ivory/10 text-ivory"
+                    "rounded-md px-3 py-2 text-sm font-medium text-body transition hover:bg-surface-soft hover:text-navy focus-visible:outline-offset-2",
+                    active && "bg-surface-soft text-navy"
                   )}
                 >
                   {item.label}
@@ -86,7 +86,7 @@ export function Header() {
           <div className="hidden items-center gap-3 lg:flex">
             <Link
               href={primaryCta.href}
-              className="inline-flex h-10 items-center justify-center rounded-lg bg-amber px-4 text-sm font-semibold text-navy transition hover:-translate-y-0.5 hover:bg-[#d8890d]"
+              className="inline-flex h-10 items-center justify-center rounded-lg bg-amber px-4 text-sm font-semibold text-ivory"
             >
               {primaryCta.label}
             </Link>
@@ -97,7 +97,7 @@ export function Header() {
             aria-label="Open menu"
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(true)}
-            className="flex h-11 w-11 items-center justify-center rounded-lg border border-ivory/15 bg-ivory/[0.08] text-ivory lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-lg border border-navy/10 bg-white text-navy lg:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>

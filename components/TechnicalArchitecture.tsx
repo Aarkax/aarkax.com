@@ -30,7 +30,7 @@ export function TechnicalArchitecture() {
         <div className="relative">
           <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-amber">Interactive architecture map</p>
-            <span className="w-fit rounded-full bg-green px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ivory">
+            <span className="w-fit rounded-full bg-green px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-navy">
               Governed flow
             </span>
           </div>
@@ -44,7 +44,7 @@ export function TechnicalArchitecture() {
                 transition={{ delay: index * 0.05, duration: 0.35 }}
                 className="grid gap-3 rounded-lg border border-ivory/[0.12] bg-ivory/[0.06] p-4 sm:grid-cols-[44px_0.42fr_1fr] sm:items-start"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-md bg-amber text-sm font-semibold text-navy">
+                <span className="flex h-10 w-10 items-center justify-center rounded-md bg-amber text-sm font-semibold text-ivory">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-semibold text-ivory">{layer.title}</h3>

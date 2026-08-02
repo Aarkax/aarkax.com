@@ -113,7 +113,7 @@ export default function Home() {
             <div className="mt-12 grid gap-4 lg:grid-cols-6">
               {processSteps.map((step, index) => (
                 <article key={step.title} className="relative rounded-lg border border-ivory/[0.12] bg-ivory/[0.055] p-5">
-                  <div className="mb-8 flex h-10 w-10 items-center justify-center rounded-md bg-amber font-mono text-sm font-semibold text-navy">
+                  <div className="mb-8 flex h-10 w-10 items-center justify-center rounded-md bg-amber font-mono text-sm font-semibold text-ivory">
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <h3 className="text-xl font-semibold text-ivory">{step.title}</h3>
@@ -235,7 +235,7 @@ export default function Home() {
               </p>
               <Link
                 href={primaryCta.href}
-                className="mt-7 inline-flex h-12 items-center justify-center rounded-lg bg-amber px-6 text-sm font-semibold text-navy transition hover:-translate-y-0.5 hover:bg-[#d8890d]"
+                className="mt-7 inline-flex h-12 items-center justify-center rounded-lg bg-amber px-6 text-sm font-semibold text-ivory"
               >
                 {primaryCta.label}
               </Link>
