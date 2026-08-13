@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Aarkax | Data and AI systems that work in production",
+    default: "Aarkax — AI, Data & Cloud Engineering",
     template: "%s | Aarkax"
   },
   description: siteConfig.description,
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   openGraph: {
-    title: "Aarkax | Data and AI systems that work in production",
+    title: "Aarkax — AI, Data & Cloud Engineering",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: "Aarkax",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aarkax | Data and AI systems that work in production",
+    title: "Aarkax — AI, Data & Cloud Engineering",
     description: siteConfig.description,
     images: ["/images/social/aarkax_open_graph_1200x630.png"]
   },
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  colorScheme: "dark light",
-  themeColor: "#0F172A"
+  colorScheme: "dark",
+  themeColor: "#0b0d13"
 };
 
 const organizationSchema = {
@@ -59,9 +59,9 @@ const organizationSchema = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>
-        <a className="skip-link" href="#main-content">
+    <html lang="en" className="dark">
+      <body className="bg-background text-foreground antialiased selection:bg-primary/30 selection:text-white">
+        <a className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white" href="#main-content">
           Skip to content
         </a>
         {children}

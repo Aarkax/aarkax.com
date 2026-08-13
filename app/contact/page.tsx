@@ -1,43 +1,69 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { ContactForm } from "@/components/ContactForm";
-import { PageShell } from "@/components/PageShell";
-import { siteConfig } from "@/lib/constants";
+import { AnimatedGrid } from "@/components/site/AnimatedGrid";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
+import { Eyebrow } from "@/components/site/primitives";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact — Aarkax",
   description:
-    "Discuss a data, AI, automation, or platform reliability challenge with Aarkax."
+    "Discuss an AI, data engineering, cloud, or automation challenge with Aarkax."
 };
 
 export default function ContactPage() {
   return (
-    <PageShell
-      eyebrow="Contact"
-      title="Discuss a data, AI, automation, or reliability challenge."
-      description="Share enough context for Aarkax to understand the current system, desired outcome, risk, and constraints. The first useful step may be an assessment, architecture review, pilot, or a simpler fix."
-    >
-      <section className="pb-20">
-        <div className="container-padded grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <aside className="rounded-lg border border-navy/10 bg-white p-6">
-            <h2 className="text-2xl font-semibold text-navy">What to include</h2>
-            <ul className="mt-6 grid gap-3 text-sm leading-7 text-body">
-              <li>Current data sources, tools, workflows, and manual steps.</li>
-              <li>The decision, automation, AI use case, or reliability problem you need to improve.</li>
-              <li>Known security, privacy, integration, timeline, or stakeholder constraints.</li>
-              <li>What a successful first phase would prove.</li>
-            </ul>
-            <div className="mt-8 rounded-lg border border-navy/10 bg-ivory p-4 text-sm leading-7 text-body">
-              Prefer email? Write to{" "}
-              <Link href={`mailto:${siteConfig.email}`} className="font-semibold text-green">
-                {siteConfig.email}
-              </Link>
-              .
-            </div>
-          </aside>
-          <ContactForm />
-        </div>
-      </section>
-    </PageShell>
+    <>
+      <Header />
+      <main id="main-content" className="relative pt-20">
+        <section className="relative overflow-hidden pt-16 pb-20 md:py-28">
+          <AnimatedGrid />
+          <div className="relative container-page grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
+            <ScrollReveal className="flex flex-col gap-6">
+              <Eyebrow>CONTACT</Eyebrow>
+              <h1 className="text-4xl font-semibold tracking-tight text-gradient sm:text-6xl leading-[1.05]">
+                Let&apos;s build something fast and reliable.
+              </h1>
+              <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+                Share details about your challenge, current stack, and desired goals. We&apos;ll schedule a conversation to discuss the technical architecture and delivery path.
+              </p>
+
+              <div className="glass-panel rounded-2xl p-6 space-y-4">
+                <h3 className="label-mono">What to include</h3>
+                <ul className="space-y-3 text-xs sm:text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span>Current data sources, cloud infrastructure, and manual workflows</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span>The AI agent, data platform, or automation problem to solve</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span>Known timeline, security, or technology constraints</span>
+                  </li>
+                </ul>
+                <div className="pt-2 border-t border-border">
+                  <p className="text-xs text-muted-foreground">
+                    Prefer direct email? Reach out at{" "}
+                    <Link href="mailto:hello@aarkax.com" className="text-foreground underline hover:text-primary">
+                      hello@aarkax.com
+                    </Link>
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={120}>
+              <ContactForm />
+            </ScrollReveal>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }

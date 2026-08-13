@@ -6,7 +6,6 @@ import { ArrowRight } from "lucide-react";
 import { budgetOptions, contactInterestOptions, timelineOptions } from "@/lib/site-data";
 
 type FormState = "idle" | "submitting" | "success" | "error";
-
 type Errors = Record<string, string>;
 
 function validate(formData: FormData): Errors {
@@ -28,8 +27,8 @@ export function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<Errors>({});
   const statusMessage = useMemo(() => {
-    if (state === "success") return "Thanks. Your challenge has been received for review.";
-    if (state === "error") return "The inquiry could not be submitted. Check the fields and try again.";
+    if (state === "success") return "Thanks! Your project challenge has been received.";
+    if (state === "error") return "The inquiry could not be submitted. Please check the fields and try again.";
     return "";
   }, [state]);
 
@@ -68,7 +67,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-lg border border-navy/10 bg-white p-6 shadow-card"
+      className="glass-panel rounded-3xl p-6 sm:p-8"
       noValidate
       aria-describedby="contact-status"
     >
@@ -82,11 +81,11 @@ export function ContactForm() {
         <Field label="Company" id="company" error={errors.company}>
           <input id="company" name="company" autoComplete="organization" className="form-input" aria-invalid={Boolean(errors.company)} />
         </Field>
-        <Field label="Role" id="role" error={errors.role}>
+        <Field label="Role" id="role">
           <input id="role" name="role" autoComplete="organization-title" className="form-input" />
         </Field>
         <Field label="Area of interest" id="interest" error={errors.interest}>
-          <select id="interest" name="interest" className="form-input" aria-invalid={Boolean(errors.interest)}>
+          <select id="interest" name="interest" className="form-input text-foreground bg-surface" aria-invalid={Boolean(errors.interest)}>
             <option value="">Select one</option>
             {contactInterestOptions.map((option) => (
               <option key={option} value={option}>
@@ -95,8 +94,8 @@ export function ContactForm() {
             ))}
           </select>
         </Field>
-        <Field label="Expected timeline" id="timeline" error={errors.timeline}>
-          <select id="timeline" name="timeline" className="form-input">
+        <Field label="Expected timeline" id="timeline">
+          <select id="timeline" name="timeline" className="form-input text-foreground bg-surface">
             {timelineOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -104,8 +103,8 @@ export function ContactForm() {
             ))}
           </select>
         </Field>
-        <Field label="Budget context" id="budget" error={errors.budget} className="sm:col-span-2">
-          <select id="budget" name="budget" className="form-input">
+        <Field label="Budget context" id="budget" className="sm:col-span-2">
+          <select id="budget" name="budget" className="form-input text-foreground bg-surface">
             {budgetOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -117,8 +116,8 @@ export function ContactForm() {
           <textarea
             id="description"
             name="description"
-            rows={6}
-            className="form-input min-h-36 resize-y py-3"
+            rows={5}
+            className="form-input min-h-32 resize-y py-3"
             aria-invalid={Boolean(errors.description)}
             placeholder="Describe the current state, desired outcome, constraints, and systems involved."
           />
@@ -128,26 +127,25 @@ export function ContactForm() {
       <input tabIndex={-1} autoComplete="off" className="hidden" name="website" aria-hidden="true" />
 
       <div className="mt-5">
-        <label className="flex gap-3 text-sm leading-6 text-body">
-          <input name="consent" type="checkbox" className="mt-1 h-4 w-4 rounded border-navy/20 accent-amber" />
+        <label className="flex gap-3 text-xs leading-5 text-muted-foreground">
+          <input name="consent" type="checkbox" className="mt-0.5 h-4 w-4 rounded border-border bg-surface accent-primary" />
           <span>
-            I agree that Aarkax may use this information to respond to my inquiry. Do not include confidential client,
-            customer, or production secrets in this form.
+            I agree that Aarkax may use this information to respond to my inquiry. Do not include confidential customer secrets.
           </span>
         </label>
-        {errors.consent ? <p className="mt-2 text-sm text-danger">{errors.consent}</p> : null}
+        {errors.consent ? <p className="mt-1.5 text-xs text-destructive">{errors.consent}</p> : null}
       </div>
 
-      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
           disabled={state === "submitting"}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-amber px-6 text-sm font-semibold text-ivory disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_24px_-4px_rgba(59,130,246,0.5)] hover:bg-primary/90 disabled:opacity-60 transition-all duration-300"
         >
           {state === "submitting" ? "Sending..." : "Send inquiry"}
           <ArrowRight className="h-4 w-4" />
         </button>
-        <p id="contact-status" role="status" className="text-sm text-body">
+        <p id="contact-status" role="status" className="text-xs font-mono text-muted-foreground">
           {statusMessage}
         </p>
       </div>
@@ -170,11 +168,11 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="mb-2 block text-sm font-semibold text-navy">
+      <label htmlFor={id} className="mb-2 block text-xs font-semibold text-foreground uppercase tracking-wider font-mono">
         {label}
       </label>
       {children}
-      {error ? <p className="mt-2 text-sm text-danger">{error}</p> : null}
+      {error ? <p className="mt-1.5 text-xs text-destructive">{error}</p> : null}
     </div>
   );
 }
