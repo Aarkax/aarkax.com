@@ -22,10 +22,10 @@ export function Footer() {
             An engineering studio building AI agents, data platforms, cloud infrastructure and automation systems for modern businesses.
           </p>
           <a
-            href="mailto:hello@aarkax.com"
+            href="mailto:info@aarkax.com"
             className="text-sm text-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
           >
-            hello@aarkax.com
+            info@aarkax.com
           </a>
         </div>
 

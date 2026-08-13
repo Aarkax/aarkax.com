@@ -49,8 +49,8 @@ export default function ContactPage() {
                 <div className="pt-2 border-t border-border">
                   <p className="text-xs text-muted-foreground">
                     Prefer direct email? Reach out at{" "}
-                    <Link href="mailto:hello@aarkax.com" className="text-foreground underline hover:text-primary">
-                      hello@aarkax.com
+                    <Link href="mailto:info@aarkax.com" className="text-foreground underline hover:text-primary">
+                      info@aarkax.com
                     </Link>
                   </p>
                 </div>
