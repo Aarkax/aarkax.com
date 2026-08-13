@@ -1,245 +1,233 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { Bot, Cloud, Database, Workflow } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
-import { ServiceCard } from "@/components/ServiceCard";
-import { SolutionCard } from "@/components/SolutionCard";
-import { CaseStudyCard } from "@/components/CaseStudyCard";
-import { SectionHeader } from "@/components/SectionHeader";
-import { TechnicalArchitecture } from "@/components/TechnicalArchitecture";
-import { CTASection } from "@/components/CTASection";
-import {
-  capabilityItems,
-  differentiators,
-  evidenceItems,
-  homepageFrames,
-  insights,
-  primaryCta,
-  problemFrames,
-  processSteps,
-  solutionItems
-} from "@/lib/site-data";
+import { AnimatedGrid } from "@/components/site/AnimatedGrid";
+import { ArchitectureDiagram } from "@/components/site/ArchitectureDiagram";
+import { CTASection } from "@/components/site/CTASection";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
+import { ServiceCard } from "@/components/site/ServiceCard";
+import { CtaLink, Eyebrow, SectionHeading } from "@/components/site/primitives";
 
 export const metadata: Metadata = {
-  title: "Aarkax | Build data and AI systems that work in production",
+  title: "Aarkax — AI, Data & Cloud Engineering",
   description:
-    "Aarkax helps organizations modernize data platforms, automate complex operations, and deploy dependable AI from architecture to secure production."
+    "Aarkax builds AI agents, data platforms, cloud infrastructure and automation systems for modern businesses."
 };
+
+const services = [
+  {
+    index: "01",
+    title: "AI Agent Development",
+    description:
+      "Intelligent agents that reason, use tools, access business data and execute real workflows end to end.",
+    tags: ["LLMs", "RAG", "Tool Calling", "Voice AI", "Agentic Workflows"],
+    icon: Bot,
+    href: "/what-we-do#ai-agents"
+  },
+  {
+    index: "02",
+    title: "Data Engineering",
+    description:
+      "Reliable pipelines and data infrastructure that turn raw, scattered data into usable intelligence.",
+    tags: ["Pipelines", "ETL/ELT", "APIs", "Warehouses", "Real-time"],
+    icon: Database,
+    href: "/what-we-do#data-engineering"
+  },
+  {
+    index: "03",
+    title: "Cloud Optimization",
+    description:
+      "Infrastructure built and tuned for performance, scale and cost — with automation from day one.",
+    tags: ["AWS", "GCP", "Docker", "Kubernetes", "IaC"],
+    icon: Cloud,
+    href: "/what-we-do#cloud-optimization"
+  },
+  {
+    index: "04",
+    title: "Automation Tools",
+    description:
+      "Custom software that removes repetitive operational work across teams, tools and systems.",
+    tags: ["Workflows", "Internal Tools", "APIs", "Integrations"],
+    icon: Workflow,
+    href: "/what-we-do#automation-tools"
+  }
+];
+
+const process = [
+  { step: "Discover", copy: "Understand the business problem before writing code." },
+  { step: "Architect", copy: "Design the technical system, data flow and boundaries." },
+  { step: "Build", copy: "Engineer the product and the infrastructure around it." },
+  { step: "Deploy", copy: "Ship reliable systems into production." },
+  { step: "Optimize", copy: "Continuously improve performance, reliability and cost." }
+];
+
+const differentiators = [
+  {
+    title: "Built for Production",
+    copy: "We don't stop at prototypes. We build systems designed to operate reliably under real load."
+  },
+  {
+    title: "Engineering First",
+    copy: "Strong software architecture and infrastructure fundamentals behind every solution."
+  },
+  {
+    title: "AI-Native",
+    copy: "We apply modern AI capabilities where they create measurable business value."
+  },
+  {
+    title: "Lean & Fast",
+    copy: "Small, focused engineering teams without unnecessary enterprise overhead."
+  }
+];
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main id="main-content" className="page-shell">
-        <Hero />
+      <main id="main-content" className="relative pt-20">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden pt-12 pb-20 md:py-28">
+          <AnimatedGrid />
+          <div className="relative container-page grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="flex flex-col gap-6">
+              <div>
+                <Eyebrow>AI · DATA · CLOUD · AUTOMATION</Eyebrow>
+              </div>
+              <h1 className="text-4xl font-semibold tracking-tight text-gradient sm:text-6xl lg:text-7xl leading-[0.98]">
+                We build intelligent systems for businesses that want to move faster.
+              </h1>
+              <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                Aarkax engineers AI agents, data platforms, cloud infrastructure and automation
+                systems that turn complex business workflows into scalable technology.
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <CtaLink href="/contact" variant="primary" arrow="right">
+                  Start a Project
+                </CtaLink>
+                <CtaLink href="#capabilities" variant="outline" arrow="down">
+                  Explore Our Work
+                </CtaLink>
+              </div>
+            </div>
 
-        <section className="bg-navy py-6 text-ivory" aria-label="Homepage story frames">
-          <div className="container-padded overflow-x-auto">
-            <ol className="flex min-w-max gap-3 border-y border-ivory/10 py-4">
-              {homepageFrames.map((frame, index) => (
-                <li key={frame} className="flex items-center gap-3 pr-4 text-xs text-ivory/60">
-                  <span className="font-mono text-amber">{String(index + 1).padStart(2, "0")}</span>
-                  {frame}
-                </li>
+            <div>
+              <ArchitectureDiagram
+                title="SYSTEM OVERVIEW"
+                nodes={[
+                  { label: "User / API", sub: "requests · events · voice" },
+                  { label: "AI Agent", sub: "reasoning · tools · memory" },
+                  { label: "Data Layer", sub: "RAG · warehouse · streams" },
+                  { label: "Cloud Infrastructure", sub: "containers · autoscale · CI/CD" },
+                  { label: "Automation", sub: "workflows executed reliably" }
+                ]}
+              />
+            </div>
+          </div>
+
+          {/* Positioning strip */}
+          <div className="relative mt-16 border-y border-border bg-surface/30">
+            <div className="container-page flex flex-col gap-3 py-6 md:flex-row md:items-center md:justify-between">
+              <p className="label-mono">AI Engineering · Data Engineering · Cloud · Automation</p>
+              <p className="text-xs text-muted-foreground">
+                From idea to production — we engineer the systems that make modern businesses faster.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Capabilities Section ("What We Do") */}
+        <section id="capabilities" className="container-page scroll-mt-24 py-20 md:py-32">
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="WHAT WE DO"
+              title="Four capabilities, engineered deeply."
+              description="A focused offering instead of a service catalogue — each capability supports the others."
+            />
+          </ScrollReveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {services.map((service, i) => (
+              <ScrollReveal key={service.index} delay={i * 90}>
+                <ServiceCard {...service} />
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
+
+        {/* Process Section ("How We Build") */}
+        <section className="relative border-y border-border bg-surface/20 py-20 md:py-32">
+          <div className="container-page">
+            <ScrollReveal>
+              <SectionHeading eyebrow="HOW WE BUILD" title="A short path from problem to production." />
+            </ScrollReveal>
+            <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-5">
+              {process.map((item, i) => (
+                <ScrollReveal
+                  key={item.step}
+                  delay={i * 100}
+                  className="relative flex flex-col gap-3 bg-background p-6"
+                >
+                  <span className="label-mono">0{i + 1}</span>
+                  <h3 className="text-lg font-semibold tracking-tight text-foreground">{item.step}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 block h-px w-full bg-gradient-to-r from-primary/70 to-transparent"
+                  />
+                </ScrollReveal>
               ))}
             </ol>
           </div>
         </section>
 
-        <section className="section-y bg-navy text-ivory">
-          <div className="container-padded">
-            <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-              <SectionHeader
-                eyebrow="From complexity to clarity"
-                title="Aarkax turns fragmented signals into governed systems."
-                description="The work starts where most AI and automation initiatives get stuck: scattered data, manual decisions, missing controls, and unreliable operating infrastructure."
-                tone="light"
+        {/* Architecture Visual */}
+        <section className="container-page py-20 md:py-32">
+          <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
+            <ScrollReveal direction="left" className="flex flex-col gap-6">
+              <SectionHeading
+                eyebrow="ARCHITECTURE"
+                title="Engineering systems that work together."
+                description="Agents are only useful when they're wired into real data, real infrastructure and real workflows. We design the whole stack, not a demo layer on top of it."
               />
-              <div className="grid gap-4 md:grid-cols-2">
-                {problemFrames.map((problem, index) => (
-                  <article key={problem.title} className="rounded-lg border border-ivory/[0.12] bg-ivory/[0.055] p-5">
-                    <div className="mb-6 flex items-center justify-between gap-4">
-                      <h3 className="text-xl font-semibold text-ivory">{problem.title}</h3>
-                      <span className="font-mono text-sm text-amber">{String(index + 1).padStart(2, "0")}</span>
-                    </div>
-                    <div className="grid gap-3">
-                      <div className="data-lane rounded-md border border-ivory/10 bg-navy/75 p-4">
-                        <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ivory/50">Raw input</p>
-                        <p className="mt-2 text-sm leading-6 text-ivory/70">{problem.before}</p>
-                      </div>
-                      <div className="rounded-md border border-amber/25 bg-amber/10 p-4">
-                        <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-amber">Structured output</p>
-                        <p className="mt-2 text-sm leading-6 text-ivory">{problem.after}</p>
-                      </div>
-                    </div>
-                  </article>
-                ))}
+              <div>
+                <CtaLink href="/what-we-do" variant="outline" arrow="right">
+                  See how we build
+                </CtaLink>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="what-we-do" className="section-y bg-ivory text-navy">
-          <div className="container-padded">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <SectionHeader
-                eyebrow="Core capabilities"
-                title="An interconnected operating system for data, AI, automation, and reliability."
-                description="Each capability can stand alone, but the highest leverage appears when architecture, implementation, governance, and operations are designed together."
+            </ScrollReveal>
+            <ScrollReveal direction="right">
+              <ArchitectureDiagram
+                title="PRODUCTION STACK"
+                nodes={[
+                  { label: "Business", sub: "outcomes & operations" },
+                  { label: "Applications", sub: "products · internal tools" },
+                  { label: "AI Agents", sub: "reasoning & execution" },
+                  { label: "Data Layer", sub: "pipelines · storage · retrieval" },
+                  { label: "Cloud Infrastructure", sub: "reliable, observable, cost-aware" }
+                ]}
               />
-              <Link href="/what-we-do" className="inline-flex items-center gap-2 text-sm font-semibold text-green">
-                Explore capabilities
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {capabilityItems.map((service, index) => (
-                <ServiceCard key={service.slug} service={service} index={index} />
-              ))}
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
-        <section className="section-y bg-navy text-ivory">
-          <div className="container-padded">
-            <SectionHeader
-              eyebrow="Parallel engineering workflow"
-              title="Multiple workstreams advance together, then converge into a production system."
-              description="Discovery, architecture, implementation, validation, integration, and improvement run as connected streams instead of a slow handoff chain."
-              tone="light"
-            />
-            <div className="mt-12 grid gap-4 lg:grid-cols-6">
-              {processSteps.map((step, index) => (
-                <article key={step.title} className="relative rounded-lg border border-ivory/[0.12] bg-ivory/[0.055] p-5">
-                  <div className="mb-8 flex h-10 w-10 items-center justify-center rounded-md bg-amber font-mono text-sm font-semibold text-ivory">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="text-xl font-semibold text-ivory">{step.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-ivory/60">{step.description}</p>
-                  <div className="mt-6 h-1 rounded-full bg-ivory/10">
-                    <div className="h-1 rounded-full bg-amber" style={{ width: `${Math.max(18, (index + 1) * 16)}%` }} />
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="solutions" className="section-y bg-ivory text-navy">
-          <div className="container-padded">
-            <SectionHeader
-              eyebrow="Solutions"
-              title="Concrete patterns for teams that need trusted decisions and lower manual load."
-              description="Each solution starts from a buyer problem, then maps the data, AI, workflow, security, and operating boundaries needed to make it dependable."
-            />
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {solutionItems.map((solution, index) => (
-                <SolutionCard key={solution.slug} solution={solution} index={index} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="work" className="section-y bg-navy text-ivory">
-          <div className="container-padded">
-            <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-              <SectionHeader
-                eyebrow="Selected work"
-                title="Reference builds and technical demonstrations until client stories are approved."
-                description="The PRD prohibits invented clients and unsupported metrics. These work items are clearly labelled as Aarkax reference builds and should be replaced or expanded with approved client proof when available."
-                tone="light"
-              />
-              <div className="grid gap-5">
-                {evidenceItems.map((item) => (
-                  <CaseStudyCard key={item.title} item={item} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="architecture" className="section-y bg-navy text-ivory">
-          <div className="container-padded">
-            <div className="mb-10">
-              <SectionHeader
-                eyebrow="Technology and architecture"
-                title="Readable for executives. Specific enough for technical evaluators."
-                description="Aarkax shows how sources, ingestion, processing, intelligence, applications, governance, and monitoring connect before implementation begins."
-                tone="light"
-              />
-            </div>
-            <TechnicalArchitecture />
-          </div>
-        </section>
-
-        <section className="section-y bg-ivory text-navy">
-          <div className="container-padded">
-            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-              <SectionHeader
-                eyebrow="Research and future systems"
-                title="Research-led engineering without pretending experiments are finished products."
-                description="Aarkax’s future-facing work should focus on dependable AI infrastructure, autonomous operations, advanced data processing, and reusable accelerators, with claims clearly separated from production proof."
-              />
-              <div className="grid gap-4 md:grid-cols-2">
-                {differentiators.map((item) => (
-                  <article key={item.title} className="rounded-lg border border-navy/10 bg-white p-6">
-                    <h3 className="text-xl font-semibold text-navy">{item.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-body">{item.description}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="insights" className="section-y bg-ivory text-navy">
-          <div className="container-padded">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <SectionHeader
-                eyebrow="Insights"
-                title="Technical notes for teams building reliable data and AI systems."
-                description="The editorial surface is structured for future Sanity publishing, but launch content stays focused on Aarkax’s real capability areas."
-              />
-              <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-semibold text-green">
-                Read insights
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="mt-12 grid gap-5 lg:grid-cols-3">
-              {insights.map((insight) => (
-                <article key={insight.title} className="rounded-lg border-t border-navy/15 py-6">
-                  <p className="font-mono text-xs uppercase tracking-[0.14em] text-amber">{insight.pillar}</p>
-                  <h3 className="mt-5 text-2xl font-semibold leading-tight text-navy">{insight.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-body">{insight.excerpt}</p>
-                  <p className="mt-6 text-xs text-body">{insight.readTime}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section-y bg-navy text-ivory">
-          <div className="container-padded grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-amber">Final conversion frame</p>
-              <h2 className="mt-6 font-display text-4xl font-semibold leading-tight text-balance text-ivory sm:text-5xl">
-                Let’s build the intelligence layer your business needs.
-              </h2>
-            </div>
-            <div className="rounded-lg border border-ivory/[0.12] bg-ivory/[0.055] p-6">
-              <p className="text-base leading-8 text-ivory/70">
-                Start with a specific challenge. Aarkax will help frame the architecture, delivery path, risks, and
-                whether a simpler system is the better answer.
-              </p>
-              <Link
-                href={primaryCta.href}
-                className="mt-7 inline-flex h-12 items-center justify-center rounded-lg bg-amber px-6 text-sm font-semibold text-ivory"
+        {/* Why Aarkax */}
+        <section className="container-page pb-12">
+          <ScrollReveal>
+            <SectionHeading eyebrow="WHY AARKAX" title="Small team. Production standards." />
+          </ScrollReveal>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
+            {differentiators.map((item, i) => (
+              <ScrollReveal
+                key={item.title}
+                delay={i * 90}
+                className="group bg-background p-8 transition-colors duration-500 hover:bg-surface/60"
               >
-                {primaryCta.label}
-              </Link>
-            </div>
+                <h3 className="text-xl font-semibold tracking-tight text-foreground">{item.title}</h3>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+                  {item.copy}
+                </p>
+              </ScrollReveal>
+            ))}
           </div>
         </section>
 

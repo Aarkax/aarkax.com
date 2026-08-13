@@ -12,63 +12,78 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        surface: "var(--surface)",
+        "surface-2": "var(--surface-2)",
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)"
+        },
+        popover: {
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)"
+        },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))"
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)"
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))"
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)"
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))"
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)"
         },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))"
+        accent: {
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+          2: "var(--accent-2)"
         },
-        navy: "#0F172A",
-        amber: "#4F46E5",
-        green: "#06B6D4",
-        ivory: "#F8FAFC",
-        ink: "#0F172A",
-        body: "#64748B",
-        success: "#10B981",
-        warning: "#F59E0B",
-        danger: "#EF4444",
-        "surface-deep": "#172554",
-        "surface-2": "#1E293B",
-        "surface-soft": "#F1F5F9"
+        border: "var(--border)",
+        "border-strong": "var(--border-strong)",
+        input: "var(--input)",
+        ring: "var(--ring)"
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)"
+        sm: "calc(var(--radius) - 4px)",
+        "2xl": "1rem",
+        "3xl": "1.5rem"
       },
       fontFamily: {
-        sans: ["Inter", "Geist", "IBM Plex Sans", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "IBM Plex Mono", "ui-monospace", "monospace"]
+        sans: ["Inter", "Geist", "system-ui", "sans-serif"],
+        display: ["Geist", "Inter", "system-ui", "sans-serif"],
+        mono: ["Geist Mono", "JetBrains Mono", "ui-monospace", "monospace"]
       },
       boxShadow: {
-        soft: "0 24px 64px rgba(15, 23, 42, 0.18)",
-        card: "0 10px 30px rgba(15, 23, 42, 0.07)",
-        amber: "0 14px 32px rgba(79, 70, 229, 0.22)"
+        card: "0 1px 0 0 rgba(255, 255, 255, 0.05) inset, 0 24px 60px -40px rgba(0, 0, 0, 0.8)",
+        glow: "0 0 24px -4px rgba(59, 130, 246, 0.4)"
       },
-      backgroundImage: {
-        "dot-grid": "radial-gradient(rgba(6,23,42,.16) 1px, transparent 1px)",
-        "technical-grid":
-          "linear-gradient(rgba(248,245,238,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(248,245,238,.08) 1px, transparent 1px)"
+      keyframes: {
+        "float-glow": {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)", opacity: "0.5" },
+          "50%": { transform: "translate3d(0, -3%, 0) scale(1.06)", opacity: "0.75" }
+        },
+        dash: {
+          to: { strokeDashoffset: "-200" }
+        },
+        pulseNode: {
+          "0%, 100%": { opacity: "0.55" },
+          "50%": { opacity: "1" }
+        },
+        rise: {
+          from: { opacity: "0", transform: "translate3d(0, 18px, 0)" },
+          to: { opacity: "1", transform: "none" }
+        }
       },
-      transitionTimingFunction: {
-        standard: "var(--ease-standard)",
-        emphasized: "var(--ease-emphasized)"
+      animation: {
+        "glow-drift": "float-glow 14s ease-in-out infinite",
+        dash: "dash 6s linear infinite",
+        node: "pulseNode 3.2s ease-in-out infinite",
+        rise: "rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both"
       }
     }
   },
@@ -76,3 +91,4 @@ const config: Config = {
 };
 
 export default config;
+
